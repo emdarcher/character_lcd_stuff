@@ -15,7 +15,7 @@ MAIN = main.c
 ## If you've split your program into multiple files, 
 ## include the additional .c source (in same directory) here 
 ## (and include the .h files in your foo.c)
-LOCAL_SOURCE =
+LOCAL_SOURCE = LCD.c
 # LOCAL_SOURCE = USART.c
 
 ## Here you can link to one more directory (and multiple .c files)
