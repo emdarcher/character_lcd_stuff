@@ -133,13 +133,16 @@ void lcd_add_custom_char(const uint8_t * in_bmp_P,
     //send command to enter new custom character
     uint8_t line_data_start_addr = (uint8_t)(char_addr << 3) | 0x00;
     lcd_send_cmd(LCD_CMD_SET_CGRAM_ADDR | line_data_start_addr);
+    _delay_us(LCD_CMD_WAIT_US);
 
     //set to data entry mode
     LCD_RS_PORT |= (1<<LCD_RS_BIT); 
-    
+    _delay_us(LCD_CMD_WAIT_US); 
+
     uint8_t i;
     for(i=0;i<rows;i++){
         lcd_send_data(pgm_read_byte(in_bmp_P + i));
+        _delay_us(LCD_WRITE_WAIT_US);
     } 
      
 }

@@ -20,6 +20,9 @@
 #define LCD_STARTUP_MS  20
 #define LCD_CMD_WAIT_US  50
 #define LCD_CHAR_WAIT_US 50
+#define LCD_WRITE_WAIT_US 50
+
+#define LCD_PIXEL_ROWS  8
 
 //define the commands
 #define LCD_CMD_CLR_DISP    0x01

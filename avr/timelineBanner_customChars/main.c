@@ -23,14 +23,16 @@ const uint8_t line1[] PROGMEM = {
     ' ',
 #if !CENTERED
     //no ノ (の)
-    CHAR_JP_NO,
+    //CHAR_JP_NO,
+    HIRAGANA_NO,
 #endif
 };
 
 const uint8_t line2[] PROGMEM = {
 #if CENTERED
     //no ノ (の)
-    CHAR_JP_NO,
+    //CHAR_JP_NO,
+    HIRAGANA_NO,
     ' ',
 #endif
     //taimurain (timeline) タイムライン
@@ -41,7 +43,8 @@ const uint8_t line2[] PROGMEM = {
     CHAR_JP_HE,
     ' ',
     //youkoso ヨウコソ
-    CHAR_JP_YO, CHAR_JP_U, CHAR_JP_KO, CHAR_JP_SO,
+    //CHAR_JP_YO, CHAR_JP_U, CHAR_JP_KO, CHAR_JP_SO,
+    HIRAGANA_YO, HIRAGANA_U, HIRAGANA_KO, HIRAGANA_SO, 
 };
 
 int main(void){
@@ -49,6 +52,16 @@ int main(void){
     lcd_init();
     //set the cursor to not blink
     lcd_send_cmd(LCD_CMD_DISP_CTRL | LCD_CMD_DISP_CTRL_DISP_ON);
+    //add the custom characters
+    lcd_add_custom_char(&custom_char_NO, LCD_PIXEL_ROWS, HIRAGANA_NO);
+    lcd_add_custom_char(&custom_char_YO, LCD_PIXEL_ROWS, HIRAGANA_YO);
+    lcd_add_custom_char(&custom_char_U, LCD_PIXEL_ROWS, HIRAGANA_U);
+    lcd_add_custom_char(&custom_char_KO, LCD_PIXEL_ROWS, HIRAGANA_KO);
+    lcd_add_custom_char(&custom_char_SO, LCD_PIXEL_ROWS, HIRAGANA_SO);
+    
+    //set cursor to beginning of the first line
+    lcd_send_cmd(LCD_CMD_SET_DDRAM_ADDR | 0x00);
+
     //send 1st line
     lcd_send_arr_P(&line1, sizeof(line1));
     //set cursor to beginning of the second line
