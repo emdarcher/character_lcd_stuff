@@ -6,7 +6,12 @@
 #include "LCD.h"
 #include "LCD_char_jp.h"
 
+#define CENTERED 1
+
 const uint8_t line1[] PROGMEM = {
+#if CENTERED
+    ' ',' ',
+#endif
     //i-san イーサン 
     CHAR_JP_I, CHAR_JP_PROLONG, CHAR_JP_SA, CHAR_JP_N,
     //(dot) ・
@@ -15,11 +20,18 @@ const uint8_t line1[] PROGMEM = {
     CHAR_JP_TE, CHAR_JP_NIGORI, CHAR_JP_Sm_YU, 
     CHAR_JP_RA, CHAR_JP_N, CHAR_JP_TO,
     ' ',
+#if !CENTERED
     //no ノ (の)
     CHAR_JP_NO,
+#endif
 };
 
 const uint8_t line2[] PROGMEM = {
+#if CENTERED
+    //no ノ (の)
+    CHAR_JP_NO,
+    ' ',
+#endif
     //taimurain (timeline) タイムライン
     CHAR_JP_TA, CHAR_JP_I, CHAR_JP_MU,
     CHAR_JP_RA, CHAR_JP_I, CHAR_JP_N,
@@ -34,6 +46,8 @@ const uint8_t line2[] PROGMEM = {
 int main(void){
 
     lcd_init();
+    //set the cursor to not blink
+    lcd_send_cmd(LCD_CMD_DISP_CTRL | LCD_CMD_DISP_CTRL_DISP_ON);
     //send 1st line
     lcd_send_arr_P(&line1, sizeof(line1));
     //set cursor to beginning of the second line
