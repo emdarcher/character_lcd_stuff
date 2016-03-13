@@ -19,10 +19,27 @@ const uint8_t line1[] PROGMEM = {
     CHAR_JP_NO,
 };
 
+const uint8_t line2[] PROGMEM = {
+    //taimurain (timeline) タイムライン
+    CHAR_JP_TA, CHAR_JP_I, CHAR_JP_MU,
+    CHAR_JP_RA, CHAR_JP_I, CHAR_JP_N,
+    ' ',
+    //he ヘ
+    CHAR_JP_HE,
+    ' ',
+    //youkoso ヨウコソ
+    CHAR_JP_YO, CHAR_JP_U, CHAR_JP_KO, CHAR_JP_SO,
+};
+
 int main(void){
 
     lcd_init();
+    //send 1st line
     lcd_send_arr_P(&line1, sizeof(line1));
+    //set cursor to beginning of the second line
+    lcd_send_cmd(LCD_CMD_SET_DDRAM_ADDR | 0x40);
+    //send 2nd line
+    lcd_send_arr_P(&line2, sizeof(line2));
 
     while(1);
 
