@@ -22,9 +22,9 @@ const uint8_t custom_char_NO[] PROGMEM = {
 #define HIRAGANA_YO 0x01
 const uint8_t custom_char_YO[] PROGMEM = {
     //よ
+    0b00000000,
     0b00000100,
     0b00000111,
-    0b00000100,
     0b00000100,
     0b00001100,
     0b00010110,
