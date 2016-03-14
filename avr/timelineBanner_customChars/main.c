@@ -22,16 +22,14 @@ const uint8_t line1[] PROGMEM = {
     CHAR_JP_RA, CHAR_JP_N, CHAR_JP_TO,
     ' ',
 #if !CENTERED
-    //no ノ (の)
-    //CHAR_JP_NO,
+    //no の
     HIRAGANA_NO,
 #endif
 };
 
 const uint8_t line2[] PROGMEM = {
 #if CENTERED
-    //no ノ (の)
-    //CHAR_JP_NO,
+    //no の
     HIRAGANA_NO,
     ' ',
 #endif
@@ -42,8 +40,7 @@ const uint8_t line2[] PROGMEM = {
     //he ヘ
     CHAR_JP_HE,
     ' ',
-    //youkoso ヨウコソ
-    //CHAR_JP_YO, CHAR_JP_U, CHAR_JP_KO, CHAR_JP_SO,
+    //youkoso ようこそ
     HIRAGANA_YO, HIRAGANA_U, HIRAGANA_KO, HIRAGANA_SO, 
 };
 
